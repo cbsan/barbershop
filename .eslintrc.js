@@ -1,9 +1,15 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     es6: true
   },
-  extends: 'standard',
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'standard',
+    'prettier/@typescript-eslint'
+  ],
   globals: {
     Atomics: 'readable',
     SharedArrayBuffer: 'readable'
@@ -12,5 +18,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-expressions': 0,
+    '@typescript-eslint/explicit-function-return-type': 0
+  }
 }
