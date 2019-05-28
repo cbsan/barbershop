@@ -16,7 +16,7 @@ class App {
     this.middlewares()
     this.database()
     this.routes()
-    this.exception()
+    // this.exception()
 
     this.isDev = env.NODE_ENV !== 'production'
     this.express.set('projectName', env.APP_NAME || 'NONAME')
@@ -28,7 +28,7 @@ class App {
     this.express.use(express.json())
     this.express.use(cors())
     this.express.use(helmet())
-    this.express.use(express.urlencoded({ extended: false }))
+    this.express.use(express.urlencoded({ extended: true }))
   }
 
   private database (): void {}
@@ -51,10 +51,8 @@ class App {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.express.use((err: any, req: Request, res: Response) => {
       const { errors } = err
-
-      return res
-        .status(err.statusCode ? err.statusCode : 500)
-        .json({ error: errors || err.message })
+      console.info(errors)
+      res()
     })
   }
 }
