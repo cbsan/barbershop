@@ -6,13 +6,13 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'standard',
+    'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint'
   ],
   globals: {
-    Atomics: 'readable',
-    SharedArrayBuffer: 'readable'
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaVersion: 2018,

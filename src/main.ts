@@ -1,11 +1,11 @@
-import app from './app';
+import app from './app'
 
 class Main {
-  public constructor() {
-    this.boot();
+  public constructor () {
+    this.server()
   }
 
-  private boot(): void {
+  private server (): void {
     app.listen(
       app.get('port'),
       (): void =>
@@ -15,8 +15,8 @@ class Main {
           app.get('port'),
           app.get('env')
         )
-    );
+    )
   }
 }
 
-export default new Main();
+export default new Main()
