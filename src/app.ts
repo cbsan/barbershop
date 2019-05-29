@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express /* , { Request, Response } */ from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import nunjucks from 'nunjucks'
@@ -16,6 +16,7 @@ class App {
     this.middlewares()
     this.database()
     this.routes()
+    this.view()
     // this.exception()
 
     this.isDev = env.NODE_ENV !== 'production'
@@ -33,7 +34,7 @@ class App {
 
   private database (): void {}
 
-  private viewa (): void {
+  private view (): void {
     nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
       watch: this.isDev,
       express: this.express,
@@ -47,14 +48,14 @@ class App {
     this.express.use(routes)
   }
 
-  private exception () {
+  /*  private exception () {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.express.use((err: any, req: Request, res: Response) => {
       const { errors } = err
       console.info(errors)
-      res()
+      // res()
     })
-  }
+  } */
 }
 
 export default new App().express
